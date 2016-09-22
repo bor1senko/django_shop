@@ -1,0 +1,17 @@
+{% extends "task/base.html" %}
+{% block content %}
+<div class="content_product">
+  <p class="p1">
+    {{product.category}} {{product.title}}
+  </p>
+  <hr>
+    <img src="{{product.image.url}}" alt="foto" />
+    <p class="p2">
+      {{product.price}} р.
+    </p>
+</div>
+<div class="propertys">
+  {% block content1 %}
+  {% endblock %}
+</div>
+{% endblock %}

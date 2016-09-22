@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "task/style.css" %}"   charset="utf-8">
+    <title>Online shop</title>
+  </head>
+  <body>
+    <div class="baner">
+      <a href="/"><img class="logo" src="{% static "task/ons.jpg" %}" alt="logo"/></a>
+        <div class="contact">
+          <ul class="list">
+            <li class="phone1">+375(33) <b>999 99 99</b></li>
+            <li class="phone2">+375(44) <b>999 99 99</b></li>
+            <li class="phone3">+375(25) <b>999 99 99</b></li>
+          </ul>
+        </div>
+    </div>
+    <div class="home_menu">
+        <ul class="menu">
+          <li class="mein_menu">
+            <a href="">Category</a>
+            {% for item in category%}
+              <a href="">{{ item.title }}</a>
+            {% endfor %}
+          </li>
+        </ul>
+        <form class="search_form" action="/search/" method="get">
+            <input class="search_bar"
+            onblur="this.value=(this.value=='')?this.title:this.value;"
+            onfocus="this.value=(this.value==this.title)?'':this.value;"
+            name="q"
+            {% if q %} value="{{ q }}" {% else %} value="Найти" {% endif %}
+             title="Найти">
+            <input class="search_button" type="submit" name="name" value="">
+        </form>
+    </div>
+{% block content %}
+{% endblock %}
+    <div class="footer">
+      <div class="text">
+        <p>
+          <br>
+          Способы оплаты:<br>
+          Наличный расчет с курьером при доставке. Оплата банковской картой при доставке. Оплата в банках и терминалах, подключенных к системе "РАСЧЕТ" (ЕРИП). Обслуживаются карты VISA и MASTERCARD.
+          <br><br>
+        </p>
+      </div>
+      <div class="icon_pay">
+        <img src="{% static "task/oplata.png" %}" alt="icon pay" />
+      </div>
+    </div>
+  </body>
+</html>

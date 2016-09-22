@@ -1,0 +1,32 @@
+{% extends "task/view_product_base.html" %}
+{% load staticfiles %}
+{% block content1 %}
+<a href="/catalog/specif/{{product.id}}"><p >specifications</p></a>
+<a href="/catalog/commets/{{product.id}}"><p class="p2">comments</p></a>
+<hr>
+{% for item in fields.items %}
+<table>
+    <tr >
+      <td colspan="2" class="property_group" >
+          {{item.0}}
+      </td>
+    </tr>
+    {% for e in item.1 %}
+    <tr>
+      <td class="property_key">
+        {{e.key}}
+      </td>
+      <td class="property_value">
+        {% if e.value == True %}
+          <img class="image_false" src="{% static "task/true.png" %}" alt="false" />
+        {% elif e.value == False %}
+          <img class="image_false" src="{% static "task/falsee.png" %}" alt="false" />
+        {% else %}
+          {{e.value}}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endfor %}
+{% endblock %}

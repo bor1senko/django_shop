@@ -1,0 +1,109 @@
+</div>
+<div class="products">
+  {% for e in content %}
+    <img src="{{e.image.url}}" alt="" />
+    <p> {{e.title}} </p>
+    <p> {{e.price}} </p>
+  {% endfor %}
+</div>
+
+============================================================
+<table  class="property_table">
+{% for item in fields.items %}
+<tr >
+  <td class="property_group">
+      {{item.0}}
+  </td>
+</tr>
+  {% for e in item.1 %}
+  <tr class="property_info">
+    <td class="property_key">
+      {{e.key}}
+    </td>
+    <td class="property_value">
+       {{ e.value}}
+    </td>
+  </tr>
+  {% endfor %}
+{% endfor %}
+</table>
+==============================================================
+width: 170px;
+height: 35px;
+border-right: 80px solid green;
+border-top:31px solid white;
+  background-color:#E3E1E1;
+===============================================================================
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "task/style.css" %}"   charset="utf-8">
+    <title>Online shop</title>
+  </head>
+  <body>
+    <div class="baner">
+      <a href="/"><img class="logo" src="{% static "task/ons.jpg" %}" alt="logo"/></a>
+        <div class="contact">
+          <ul class="list">
+            <li class="phone1">+375(33) <b>999 99 99</b></li>
+            <li class="phone2">+375(44) <b>999 99 99</b></li>
+            <li class="phone3">+375(25) <b>999 99 99</b></li>
+          </ul>
+        </div>
+    </div>
+    <div class="home_menu">
+        <ul class="menu">
+          <li class="mein_menu">
+            <a href="">Category</a>
+            {% for item in category%}
+              <a href="">{{ item.title }}</a>
+            {% endfor %}
+          </li>
+        </ul>
+        <form class="search_form" action="index.html" method="post">
+            <input class="search_bar"
+            onblur="this.value=(this.value=='')?this.title:this.value;"
+            onfocus="this.value=(this.value==this.title)?'':this.value;"
+            name="q" value="Найти" title="Найти">
+            <input class="search_button" type="submit" name="name" value="">
+        </form>
+    </div>
+
+    <div class="content">
+      {% for item in content %}
+      {% if item.1 %}
+        <div class="title">
+          <p>
+            {{item.0}}
+          </p>
+        </div>
+        <div class="products">
+          {% for e in item.1 %}
+          <a href="#">
+          <div class="product">
+              <img src="{{e.image.url}}" alt="foto" />
+              <p class="p1">{{e.title}}</p>
+          </div>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="footer">
+      <div class="text">
+        <p>
+          <br>
+          Способы оплаты:<br>
+          Наличный расчет с курьером при доставке. Оплата банковской картой при доставке. Оплата в банках и терминалах, подключенных к системе "РАСЧЕТ" (ЕРИП). Обслуживаются карты VISA и MASTERCARD.
+          <br><br>
+        </p>
+      </div>
+      <div class="icon_pay">
+        <img src="{% static "task/oplata.png" %}" alt="icon pay" />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<div class="content">
+  {% for item in content %}
+  {% if item.1 %}
+    <div class="title">
+      <p>
+        {{item.0}}
+      </p>
+    </div>
+    <div class="products">
+      {% for e in item.1 %}
+      <a href="/catalog/{{e.id}}">
+      <div class="product">
+          <img src="{{e.image.url}}" alt="foto" />
+          <p class="p1">{{e.title}}</p>
+      </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+https://learn.javascript.ru/onscroll

@@ -1,0 +1,23 @@
+{% extends "task/base.html" %}
+{% block content %}
+<div class="height_min">
+  {% if content %}
+    <div class="content">
+        <div class="products">
+          {% for e in content %}
+          <a href="/catalog/specif/{{e.id}}">
+          <div class="product">
+              <img src="{{e.image.url}}" alt="foto" />
+              <p class="p1">{{e.title}}</p>
+          </div>
+          </a>
+          {% endfor %}
+        </div>
+    </div>
+  {% else %}
+      <p class="error_search">
+        По вашему запросу ничего не найдено
+      </p>
+  {% endif %}
+  </div>
+{% endblock %}
